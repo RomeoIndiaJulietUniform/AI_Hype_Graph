@@ -28,12 +28,16 @@ jobs:
       - name: Generate Graph
         run: python generate-graph.py
 
+      - name: Fetch latest changes from GitHub
+        run: git fetch origin main
+
+      - name: Rebase local changes on top of fetched changes
+        run: git rebase origin/main
+
       - name: Push changes to GitHub
         env:
           PAT: ${{ secrets.PAT }}
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Generated AI hype graph"
           git push
