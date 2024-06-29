@@ -25,16 +25,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytrends matplotlib
 
-      - name: Generate Graph
-        run: python generate-graph.py
-
       - name: Fetch latest changes from GitHub
         run: git fetch origin main
 
       - name: Rebase local changes on top of fetched changes
         run: git rebase origin/main
 
-      - name: Push changes to GitHub
+      - name: Stash Unstaged Changes
+        run: git stash push -u -- "Stashing unstaged changes for GitHub Actions"
+
+      - name: Generate Graph
+        run: python generate-graph.py
+
+      - name: Apply Stashed Changes
+        run: git stash pop
+
+      - name: Configure Git and Push Changes
         env:
           PAT: ${{ secrets.PAT }}
         run: |
