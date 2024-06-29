@@ -3,7 +3,7 @@ name: Generate AI Hype Graph
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   generate-graph:
@@ -30,8 +30,6 @@ jobs:
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
           git add ai_hype_graph.png
           git commit -m "Auto-generated AI Hype graph" || echo "No changes to commit"
           git push https://${{ secrets.GITHUB_ACTOR }}:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main
