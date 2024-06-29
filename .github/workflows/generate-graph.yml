@@ -34,4 +34,4 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add ai_hype_graph.png
           git commit -m "Auto-generated AI Hype graph" || echo "No changes to commit"
-          git push --force
+          git push https://${{ secrets.GITHUB_ACTOR }}:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main
