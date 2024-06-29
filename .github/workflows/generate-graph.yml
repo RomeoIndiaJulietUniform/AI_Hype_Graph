@@ -24,6 +24,4 @@ jobs:
           pip install pytrends matplotlib
           
       - name: Generate Graph
-        run: python generate-graph.py 
-        
-      -
+        run: python generate-graph.py
