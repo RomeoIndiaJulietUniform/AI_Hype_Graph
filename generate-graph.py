@@ -18,7 +18,7 @@ plt.figure(figsize=(10, 6))
 for term in search_terms:
     plt.plot(data[term], label=term)
 
-plt.title('AI Hype over Time')
+plt.title('Realtime AI Hype graph over Time')
 plt.xlabel('Year')
 plt.ylabel('Interest')
 plt.legend()
