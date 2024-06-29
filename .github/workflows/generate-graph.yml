@@ -28,10 +28,10 @@ jobs:
         
       - name: Commit and Push Changes
         env:
-          GITHUB_TOKEN: ${{ Secrets.PAT_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git add ai_hype_graph.png
-          git commit -m "Auto-generated AI Hype graph"
-          git push
+          git commit -m "Auto-generated AI Hype graph" || echo "No changes to commit"
+          git push --force
