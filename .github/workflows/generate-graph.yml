@@ -31,14 +31,8 @@ jobs:
       - name: Rebase local changes on top of fetched changes
         run: git rebase origin/main
 
-      - name: Stash Unstaged Changes
-        run: git stash push -u -- "Stashing unstaged changes for GitHub Actions"
-
       - name: Generate Graph
         run: python generate-graph.py
-
-      - name: Apply Stashed Changes
-        run: git stash pop
 
       - name: Configure Git and Push Changes
         env:
